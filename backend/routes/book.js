@@ -3,7 +3,6 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 const multer = require('../middleware/multer-config');
 
-
 const bookCtrl = require('../controllers/book');
 
 router.post('/', auth, multer, bookCtrl.createBook);
