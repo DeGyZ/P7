@@ -5,6 +5,7 @@ const bookRoutes = require('./routes/book');
 const userRoutes = require('./routes/user');
 const mongoSanitize = require('express-mongo-sanitize');
 const path = require('path');
+const hpp = require('hpp');
 require('dotenv').config();
 
 mongoose.connect(`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.k3vvpv2.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`,
@@ -34,6 +35,8 @@ app.use(
     replaceWith: '_',
   }),
 );
+
+app.use(hpp());
   
 app.use('/api/books', bookRoutes);
 app.use('/api/auth', userRoutes);
